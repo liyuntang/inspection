@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-2 bg-primary" style="height: 1000px"></div>
+    <div class="col-md-8">
+        <div class="col-md-3">
+            <h1>数据库巡检</h1>
+        </div>
+        <div>
+            <form action="" enctype="pplication/x-www-form-urlencoded" method="get">
+                <input class="form-control input-lg" type="text" placeholder="集群名称" id="clusterName">
+                <div style="height: 20px"></div>
+                <!-- Indicates a successful or positive action -->
+                <button id="xunjian" type="button" class="btn btn-success btn-primary btn-lg" style="width: 300px">巡检</button>
+
+
+                <!-- Indicates a successful or positive action -->
+                <button id="xunjianAll" type="button" class="btn btn-success btn-primary btn-lg" style="width: 300px">巡检所有集群</button>
+
+                <!-- Contextual button for informational alert messages -->
+                <button type="button" class="btn btn-info btn-primary btn-lg" style="width: 300px">查看巡检结果</button>
+
+                <!-- Contextual button for informational alert messages -->
+                <button type="button" class="btn btn-info btn-primary btn-lg" style="width: 300px">查看所有集群巡检结果</button>
+            </form>
+        </div>
+        <div style="height: 20px"></div>
+        <div>
+            {{/*            {{template "table.html"}}*/}}
+            <!-- 显示主内容的表格 -->
+            <table class="table table-bordered table-hover">
+                <tr bgcolor="#a9a9a9">
+                    <td>编号</td>
+                    <td>产品线</td>
+                    <td>类别</td>
+                    <td>集群名称</td>
+                    <td>角色</td>
+                    <td>主机名</td>
+                    <td>IP地址</td>
+                    <td>端口</td>
+                </tr>
+                {{range $index, $elem := .data}}
+                    <tr>
+                        <td>{{$index}}</td>
+                        <td>{{$elem.product}}</td>
+                        <td>{{$elem.db_kind}}</td>
+                        <td>{{$elem.cluster_name}}</td>
+                        <td>{{$elem.role}}</td>
+                        <td>{{$elem.hostname}}</td>
+                        <td>{{$elem.address}}</td>
+                        <td>{{$elem.port}}</td>
+                    </tr>
+                {{end}}
+            </table>
+        </div>
+
+    </div>
+    <div class="col-md-2 bg-primary" style="height: 1000px"></div>
+</div>
+
+<script>
+    document.getElementById('xunjian').addEventListener('click',function () {
+        location.href =  '/xunjian?cluster_name='+ document.getElementById('clusterName').value;
+    })
+</script>

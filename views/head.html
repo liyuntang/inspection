@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-2 bg-primary" style="height: 1000px"></div>
+    <div class="col-md-8">
+        <div class="col-md-3">
+            <h1>数据库巡检</h1>
+        </div>
+        <div>
+            <form action="" enctype="pplication/x-www-form-urlencoded" method="get">
+                <input class="form-control input-lg" type="text" placeholder="产品线" id="product">
+                <input class="form-control input-lg" type="text" placeholder="集群名称" id="clusterName">
+                <div style="height: 20px"></div>
+                <!-- Indicates a successful or positive action -->
+                <button id="inspection" type="button" class="btn btn-success btn-primary btn-lg" style="width: 300px">巡检</button>
+
+
+                <!-- Indicates a successful or positive action -->
+                <button id="inspectionAll" type="button" class="btn btn-info btn-primary btn-lg" style="width: 300px">巡检所有集群</button>
+
+                <!-- Contextual button for informational alert messages -->
+                <button type="button" class="btn btn-info btn-primary btn-lg" style="width: 300px">查看最近一次巡检结果</button>
+
+                <!-- Contextual button for informational alert messages -->
+                <button type="button" class="btn btn-info btn-primary btn-lg" style="width: 300px">查看所有集群最近一次巡检结果</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2 bg-primary" style="height: 1000px"></div>
+</div>
+<script>
+    document.getElementById('inspection').addEventListener('click',function () {
+        location.href =  '/inspection?cluster_name='+ document.getElementById('clusterName').value+'&product='+ document.getElementById('product').value;
+    });
+    // document.getElementById('inspectionAll').addEventListener('click',function () {
+    //     location.href =  '/inspectionAll';
+    // })
+</script>
